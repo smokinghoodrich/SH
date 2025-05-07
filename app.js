@@ -31,35 +31,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Item data - these would typically come from a backend
     const items = [
-        { name: "🍉 Арбуз", image: "images/items/watermelon.png", flavor: "Сочный летний вкус", strength: "2/5", probability: 10 },
-        { name: "🔋 Энергетик", image: "images/items/energy.png", flavor: "Заряд бодрости", strength: "4/5", probability: 8 },
-        { name: "🍑 Персик", image: "images/items/peach.png", flavor: "Нежная сладость", strength: "1/5", probability: 10 },
-        { name: "🍏 Яблоко", image: "images/items/apple.png", flavor: "Классическая свежесть", strength: "2/5", probability: 10 },
-        { name: "🍓 Клубника", image: "images/items/strawberry.png", flavor: "Ягодный взрыв", strength: "3/5", probability: 8 },
-        { name: "🎈 Бабл-Гам", image: "images/items/bubblegum.png", flavor: "Детская радость", strength: "1/5", probability: 5 },
-        { name: "🫐 Ежевика", image: "images/items/blackberry.png", flavor: "Терпкая глубина", strength: "3/5", probability: 8 },
-        { name: "🍇 Виноград", image: "images/items/grape.png", flavor: "Виноградный коктейль", strength: "2/5", probability: 10 },
-        { name: "🥶 Холодок", image: "images/items/ice.png", flavor: "Ледяная свежесть", strength: "5/5", probability: 3 },
-        { name: "🍒 Вишня", image: "images/items/cherry.png", flavor: "Терпкая сладость", strength: "4/5", probability: 5 },
-        { name: "🫐 Черника", image: "images/items/blueberry.png", flavor: "Лесная ягода", strength: "3/5", probability: 8 },
-        { name: "5% Скидка", image: "images/items/discount.png", flavor: "На ваш следующий заказ", rarity: "discount-5", probability: 5 },
-        { name: "10% Скидка", image: "images/items/discount.png", flavor: "На ваш следующий заказ", rarity: "discount-10", probability: 3 },
-        { name: "15% Скидка", image: "images/items/discount.png", flavor: "На ваш следующий заказ", rarity: "discount-15", probability: 2 },
+        { name: "🍉 Арбуз", image: "images/items/watermelon.png", flavor: "Сочный летний вкус", strength: "2/5", probability: 1 },
+        { name: "🔋 Энергетик", image: "images/items/energy.png", flavor: "Заряд бодрости", strength: "4/5", probability: 1 },
+        { name: "🍑 Персик", image: "images/items/peach.png", flavor: "Нежная сладость", strength: "1/5", probability: 1 },
+        { name: "🍏 Яблоко", image: "images/items/apple.png", flavor: "Классическая свежесть", strength: "2/5", probability: 1 },
+        { name: "🍓 Клубника", image: "images/items/strawberry.png", flavor: "Ягодный взрыв", strength: "3/5", probability: 1 },
+        { name: "🎈 Бабл-Гам", image: "images/items/bubblegum.png", flavor: "Детская радость", strength: "1/5", probability: 1 },
+        { name: "🫐 Ежевика", image: "images/items/blackberry.png", flavor: "Терпкая глубина", strength: "3/5", probability: 1 },
+        { name: "🍇 Виноград", image: "images/items/grape.png", flavor: "Виноградный коктейль", strength: "2/5", probability: 1 },
+        { name: "🥶 Холодок", image: "images/items/ice.png", flavor: "Ледяная свежесть", strength: "5/5", probability: 1 },
+        { name: "🍒 Вишня", image: "images/items/cherry.png", flavor: "Терпкая сладость", strength: "4/5", probability: 1 },
+        { name: "🫐 Черника", image: "images/items/blueberry.png", flavor: "Лесная ягода", strength: "3/5", probability: 1 },
+
+        { name: "5% Скидка", image: "images/items/discount.png", flavor: "На ваш следующий заказ", rarity: "discount-5", probability: 8 },
+        { name: "10% Скидка", image: "images/items/discount.png", flavor: "На ваш следующий заказ", rarity: "discount-10", probability: 5 },
+        { name: "15% Скидка", image: "images/items/discount.png", flavor: "На ваш следующий заказ", rarity: "discount-15", probability: 3 },
         { name: "20% Скидка", image: "images/items/discount.png", flavor: "На ваш следующий заказ", rarity: "discount-20", probability: 1 },
-        { name: "Ничего", image: "images/items/nothing.png", flavor: "Попробуйте еще раз!", rarity: "nothing", probability: 15 },
-        { name: "Бесплатная доставка", image: "images/items/shipping.png", flavor: "При заказе от 10 пачек", rarity: "free-shipping", probability: 2 },
-        { name: "Дополнительный прокрут", image: "images/items/extra-spin.png", flavor: "Откройте еще один кейс бесплатно", rarity: "extra-spin", probability: 6 }
+
+        { name: "Ничего", image: "images/items/nothing.png", flavor: "Попробуйте еще раз!", rarity: "nothing", probability: 60 },
+        { name: "Бесплатная доставка", image: "images/items/shipping.png", flavor: "При заказе от 10 пачек", rarity: "free-shipping", probability: 3 },
+        { name: "Дополнительный прокрут", image: "images/items/extra-spin.png", flavor: "Откройте еще один кейс бесплатно", rarity: "extra-spin", probability: 9 }
     ];
 
     // Configuration
     const config = {
-        itemWidth: 180,                      // Width of each item in the track
-        itemsCount: 150,                     // Number of items to generate in each track
-        spinDuration: 8000,                  // Total duration of the spin animation
-        spinEasing: 'cubic-bezier(0.12, 0.65, 0.40, 0.99)', // Smoother easing function
-        slowdownDuration: 2000,              // Duration of slowdown phase
-        freeCaseInterval: 86400,             // Time interval for free case (in seconds)
-        trackAnimationDelayIncrement: 250    // Delay between track animations
+        itemWidth: window.innerWidth <= 768 ? 140 : 180, // Адаптивная ширина
+        itemsCount: 150,
+        spinDuration: 8000,
+        spinEasing: 'cubic-bezier(0.12, 0.65, 0.40, 0.99)',
+        slowdownDuration: 2000,
+        freeCaseInterval: 86400,
+        trackAnimationDelayIncrement: 250
     };
 
     // Application state
@@ -171,7 +173,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         elements.multiTrackContainer.appendChild(trackContainer);
         
-        // Create track object and store it in state
+        // Принудительно задаем ширину элементам для мобильных устройств
+        const itemWidth = window.innerWidth <= 768 ? 140 : config.itemWidth;
+        itemsTrack.style.width = `${config.itemsCount * itemWidth}px`;
+        
         const track = {
             container: trackContainer,
             itemsTrack: itemsTrack,
@@ -181,15 +186,13 @@ document.addEventListener('DOMContentLoaded', () => {
         
         state.tracks.push(track);
         
-        // Center the track
+        // Центрируем трек с учетом ширины устройства
         const containerWidth = trackContainer.offsetWidth;
-        const itemWidth = config.itemWidth;
         const offset = (containerWidth - itemWidth) / 2;
         itemsTrack.style.left = `${offset}px`;
         
         return track;
     }
-
     // Fill a track with random items
     function fillTrackWithItems(track) {
         const items = generateItems();

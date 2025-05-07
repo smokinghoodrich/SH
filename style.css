@@ -1,3 +1,9 @@
+html, body {
+    touch-action: manipulation;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: none;
+}
+
 :root {
     /* Main color palette */
     --primary: #00B4D8;
@@ -641,6 +647,50 @@ body {
     pointer-events: none;
 }
 
+/* Responsive sty5les */
+@media (max-width: 768px) {
+    .track-container {
+        height: 160px;
+    }
+    
+    .scroll-item {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .scroll-item img {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .track-center-line {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .track-container {
+        height: 140px;
+    }
+    
+    .scroll-item {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .scroll-item img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .track-center-line {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+
 /* Animations */
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
@@ -669,74 +719,3 @@ body {
     }
 }
 
-/* Responsive sty5les */
-@media (max-width: 768px) {
-    .case-image {
-        width: 200px;
-        height: 150px;
-    }
-    
-    .scroll-item {
-        width: 120px;
-        height: 120px;
-    }
-    
-    .scroll-item img {
-        width: 80px;
-        height: 80px;
-    }
-    
-    .track-center-line {
-        width: 130px;
-        height: 130px;
-    }
-    
-    .open-options {
-        flex-wrap: wrap;
-    }
-    
-    .open-option {
-        padding: 6px 10px;
-        font-size: 12px;
-        max-width: none;
-    }
-    
-    .item-card {
-        padding: 15px;
-    }
-    
-    .item-card img {
-        width: 80px;
-        height: 80px;
-    }
-    
-    .inventory-items {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    }
-}
-
-@media (max-width: 480px) {
-    .scroll-item {
-        width: 100px;
-        height: 100px;
-    }
-    
-    .scroll-item img {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .track-center-line {
-        width: 110px;
-        height: 110px;
-    }
-    
-    .unlock-text {
-        font-size: 16px;
-    }
-    
-    .continue-btn {
-        padding: 10px 30px;
-        font-size: 14px;
-    }
-}
