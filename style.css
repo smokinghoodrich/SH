@@ -5,49 +5,52 @@ html, body {
 }
 
 :root {
-    /* Main color palette */
+    /* Обновленная цветовая палитра с эффектом стекла */
+    --glass-bg: rgba(16, 18, 27, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-effect: blur(20px);
+    
     --primary: #00B4D8;
     --primary-dark: #0096C7;
     --primary-light: #90E0EF;
-    --dark: #0A1128;
-    --darker: #050A1A;
-    --light: #F8F9FA;
     --accent: #48CAE4;
     --neon-blue: #00F5FF;
     --neon-pink: #FF10F0;
     
-    /* Background and text colors */
+    /* Фоны и текст */
     --bg-color: #0A1128;
     --text-color: #F8F9FA;
-    --card-bg: rgba(30, 30, 30, 0.9);
-    --controls-bg: rgba(10, 17, 40, 0.8);
-    --inventory-bg: rgba(20, 25, 50, 0.95);
+    --card-bg: rgba(30, 30, 30, 0.6);
+    --controls-bg: rgba(10, 17, 40, 0.5);
+    --inventory-bg: rgba(20, 25, 50, 0.8);
     
-    /* Gradients */
+    /* Градиенты */
     --primary-gradient: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    --glass-gradient: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(0, 150, 199, 0.15));
     --discount-gradient: linear-gradient(135deg, #4CC9F0, #4895EF);
     --shipping-gradient: linear-gradient(135deg, #7209B7, #F72585);
     
-    /* Shadows and glows */
+    /* Тени и свечения */
     --neon-shadow: 0 0 15px var(--neon-blue), 0 0 30px rgba(0, 245, 255, 0.3);
     --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 [data-theme="light"] {
+    --glass-bg: rgba(255, 255, 255, 0.6);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    
     --bg-color: #F8F9FA;
     --text-color: #0A1128;
-    --card-bg: rgba(255, 255, 255, 0.9);
-    --controls-bg: rgba(248, 249, 250, 0.8);
-    --inventory-bg: rgba(255, 255, 255, 0.95);
-    --dark: #E9ECEF;
-    --darker: #DEE2E6;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --controls-bg: rgba(248, 249, 250, 0.6);
+    --inventory-bg: rgba(255, 255, 255, 0.85);
 }
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    transition: background-color 0.3s, color 0.3s;
+    transition: all 0.3s ease;
 }
 
 body {
@@ -58,6 +61,7 @@ body {
     overflow: hidden;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+    background-image: radial-gradient(circle at 50% 50%, rgba(72, 202, 228, 0.1) 0%, transparent 70%);
 }
 
 .container {
@@ -90,6 +94,7 @@ body {
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: var(--glass-effect);
 }
 
 /* Case Container */
@@ -117,11 +122,16 @@ body {
     height: 200px;
     object-fit: contain;
     margin-bottom: 25px;
-    filter: drop-shadow(0 0 15px var(--neon-blue)) drop-shadow(0 0 30px rgba(0, 245, 255, 0.3));
+    filter: drop-shadow(0 0 15px var(--neon-blue));
     transform-style: preserve-3d;
     transition: transform 0.5s ease;
     animation: float 4s ease-in-out infinite;
     perspective: 1000px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-effect);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 20px;
 }
 
 .unlock-progress {
@@ -190,7 +200,9 @@ body {
     width: 100%;
     height: 180px;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.3);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-effect);
+    border: 1px solid var(--glass-border);
     border-radius: 10px;
 }
 
@@ -225,15 +237,15 @@ body {
     width: 160px;
     height: 160px;
     margin: 0 10px;
-    background: rgba(40, 40, 40, 0.8);
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-effect);
+    border: 1px solid var(--glass-border);
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 2px solid transparent;
     transition: all 0.3s ease;
-    backdrop-filter: blur(5px);
     flex-shrink: 0;
 }
 
@@ -248,7 +260,7 @@ body {
 .scroll-item h3 {
     font-size: 14px;
     margin-top: 10px;
-    color: var(--light);
+    color: var(--text-color);
     text-align: center;
     padding: 0 10px;
 }
@@ -263,6 +275,7 @@ body {
     align-items: center;
     justify-content: center;
     background: var(--inventory-bg);
+    backdrop-filter: var(--glass-effect);
     z-index: 10;
 }
 
@@ -283,6 +296,8 @@ body {
     width: 100%;
     max-width: 280px;
     background: var(--card-bg);
+    backdrop-filter: var(--glass-effect);
+    border: 1px solid var(--glass-border);
     border-radius: 15px;
     padding: 20px;
     display: flex;
@@ -290,7 +305,6 @@ body {
     align-items: center;
     text-align: center;
     box-shadow: var(--card-shadow);
-    border: 1px solid var(--primary);
     overflow: hidden;
 }
 
@@ -369,6 +383,8 @@ body {
     gap: 15px;
     padding: 15px;
     background: var(--controls-bg);
+    backdrop-filter: var(--glass-effect);
+    border: 1px solid var(--glass-border);
     border-radius: 10px;
     margin-top: auto;
 }
@@ -384,7 +400,8 @@ body {
     font-size: 24px;
     font-weight: bold;
     color: var(--neon-blue);
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: var(--glass-effect);
     padding: 8px 20px;
     border-radius: 30px;
     display: flex;
@@ -395,8 +412,9 @@ body {
 }
 
 .profile-btn {
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: var(--glass-effect);
+    border: 1px solid var(--glass-border);
     border-radius: 30px;
     padding: 8px 20px;
     color: var(--text-color);
@@ -409,7 +427,7 @@ body {
 }
 
 .profile-btn:hover {
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .open-options {
@@ -423,6 +441,8 @@ body {
     border-radius: 20px;
     padding: 8px 15px;
     background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: var(--glass-effect);
+    border: 1px solid var(--glass-border);
     color: var(--text-color);
     cursor: pointer;
     transition: all 0.3s;
@@ -433,8 +453,9 @@ body {
 }
 
 .open-option.active {
-    background: var(--primary);
-    color: white;
+    background: rgba(0, 180, 216, 0.3);
+    border-color: rgba(0, 245, 255, 0.4);
+    color: var(--neon-blue);
     box-shadow: 0 0 10px rgba(0, 180, 216, 0.5);
 }
 
@@ -450,9 +471,12 @@ body {
     font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    background: var(--primary-gradient);
+    background: var(--glass-gradient);
+    border: 1px solid rgba(0, 245, 255, 0.3);
     box-shadow: 0 0 15px rgba(0, 180, 216, 0.5);
     width: 100%;
+    position: relative;
+    overflow: hidden;
 }
 
 .open-btn:hover {
@@ -461,11 +485,33 @@ body {
 }
 
 .open-btn:disabled {
-    background: #444;
+    background: rgba(68, 68, 68, 0.5);
     cursor: not-allowed;
     opacity: 0.7;
     transform: none !important;
     box-shadow: none !important;
+}
+
+.open-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0)
+    );
+    transform: rotate(30deg);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.open-btn:hover::after {
+    opacity: 1;
+    animation: glass-reflect 1.5s infinite;
 }
 
 .free-case-timer {
@@ -474,102 +520,167 @@ body {
     margin-top: 3px;
 }
 
-/* Inventory Modal */
+/* Inventory Modal - обновленная версия */
 .inventory-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
     display: none;
     justify-content: center;
     align-items: center;
     z-index: 100;
+    padding: 20px;
 }
 
 .inventory-content {
-    background: var(--card-bg);
-    border-radius: 15px;
-    padding: 20px;
-    width: 90%;
+    background: rgba(25, 29, 45, 0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 25px;
+    width: 100%;
     max-width: 500px;
-    max-height: 80vh;
+    max-height: 85vh;
     overflow-y: auto;
-    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: modalAppear 0.4s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes modalAppear {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
 }
 
 .inventory-content h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: var(--primary);
+    color: var(--neon-blue);
     text-transform: uppercase;
     letter-spacing: 2px;
+    font-size: 22px;
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
 }
 
 .stats {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(10, 17, 40, 0.5);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(72, 202, 228, 0.2);
     padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
     text-align: center;
 }
 
 .stats p {
     font-size: 16px;
     color: var(--text-color);
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stats p span {
+    color: var(--neon-blue);
+    font-weight: bold;
 }
 
 .inventory-items {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 10px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 12px;
+    margin-bottom: 25px;
 }
 
 .inventory-item {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(30, 35, 50, 0.6);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(72, 202, 228, 0.15);
     border-radius: 10px;
-    padding: 10px;
+    padding: 12px 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    transition: all 0.3s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.inventory-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.05),
+        rgba(255, 255, 255, 0)
+    );
+    transform: rotate(30deg);
+    opacity: 0;
+    transition: opacity 0.3s;
 }
 
 .inventory-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-color: rgba(72, 202, 228, 0.3);
+}
+
+.inventory-item:hover::before {
+    opacity: 1;
+    animation: glass-reflect 1.5s infinite;
 }
 
 .inventory-item img {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     object-fit: contain;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 0 5px rgba(0, 180, 216, 0.3));
+    transition: transform 0.3s;
+}
+
+.inventory-item:hover img {
+    transform: scale(1.1);
 }
 
 .inventory-item h3 {
-    font-size: 12px;
-    margin-bottom: 3px;
+    font-size: 13px;
+    margin-bottom: 4px;
+    font-weight: 600;
+    color: white;
 }
 
 .inventory-item p {
-    font-size: 10px;
+    font-size: 11px;
     opacity: 0.8;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.inventory-item .strength {
+    font-size: 10px;
+    margin-top: 3px;
+    color: var(--neon-blue);
+    font-weight: bold;
 }
 
 .close-inventory {
-    background: var(--primary);
-    border: none;
+    background: rgba(0, 180, 216, 0.2);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 245, 255, 0.3);
     border-radius: 30px;
-    padding: 10px 30px;
-    color: white;
+    padding: 12px 30px;
+    color: var(--neon-blue);
     font-family: 'Rajdhani', sans-serif;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 15px;
     cursor: pointer;
     transition: all 0.3s;
     text-transform: uppercase;
@@ -579,8 +690,9 @@ body {
 }
 
 .close-inventory:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
+    background: rgba(0, 180, 216, 0.3);
+    border-color: rgba(0, 245, 255, 0.5);
+    box-shadow: 0 0 15px rgba(0, 245, 255, 0.2);
 }
 
 /* Rarity styles */
@@ -617,7 +729,7 @@ body {
 
 .extra-spin {
     background: linear-gradient(135deg, #4CC9F0, #00F5FF);
-    color: var(--dark);
+    color: var(--text-color);
     animation: pulse 1.5s infinite;
 }
 
@@ -626,7 +738,7 @@ body {
     border-color: var(--neon-blue) !important;
     box-shadow: var(--neon-shadow) !important;
     transform: scale(1.1);
-    background: rgba(50, 50, 50, 0.9) !important;
+    background: rgba(50, 50, 50, 0.7) !important;
     z-index: 10;
 }
 
@@ -654,9 +766,9 @@ body {
 }
 
 @keyframes pulse {
-    0% { transform: scale(0.8); opacity: 0.5; }
-    50% { transform: scale(1.1); opacity: 0.8; }
-    100% { transform: scale(0.8); opacity: 0.5; }
+    0% { transform: scale(0.95); opacity: 0.7; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.7; }
 }
 
 @keyframes shine {
@@ -675,3 +787,7 @@ body {
     }
 }
 
+@keyframes glass-reflect {
+    0% { transform: translateX(-100%) rotate(30deg); }
+    100% { transform: translateX(100%) rotate(30deg); }
+}
