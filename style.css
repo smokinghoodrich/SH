@@ -647,50 +647,6 @@ body {
     pointer-events: none;
 }
 
-/* Responsive sty5les */
-@media (max-width: 768px) {
-    .track-container {
-        height: 160px;
-    }
-    
-    .scroll-item {
-        width: 140px;
-        height: 140px;
-    }
-    
-    .scroll-item img {
-        width: 90px;
-        height: 90px;
-    }
-    
-    .track-center-line {
-        width: 140px;
-        height: 140px;
-    }
-}
-
-@media (max-width: 480px) {
-    .track-container {
-        height: 140px;
-    }
-    
-    .scroll-item {
-        width: 120px;
-        height: 120px;
-    }
-    
-    .scroll-item img {
-        width: 80px;
-        height: 80px;
-    }
-    
-    .track-center-line {
-        width: 120px;
-        height: 120px;
-    }
-}
-
-
 /* Animations */
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
